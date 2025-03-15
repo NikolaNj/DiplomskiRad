@@ -1,0 +1,485 @@
+&COMMENT 
+DEF  Robot_program_v2()
+;FOLD INI;%{PE}
+  ;FOLD BASISTECH INI
+    GLOBAL INTERRUPT DECL 3 WHEN $STOPMESS==TRUE DO IR_STOPM ( )
+    INTERRUPT ON 3 
+    BAS (#INITMOV,0 )
+  ;ENDFOLD (BASISTECH INI)
+  ;FOLD USER INI
+    ;Make your modifications here
+
+  ;ENDFOLD (USER INI)
+;ENDFOLD (INI)
+;***********************************************************
+;*
+;*          Default src Template for Kuka-Krc
+;*        Created 14/08/2007 by Siemens PLM
+;*
+;* Study               : Njegovec_diplomski
+;* Program             : Robot_program_v2
+;* Generation Date     : 15/03/2025 at 08:14:37
+;* Robot               : KR120_R2700_2
+;* User                : nnjegovec
+;* Tecnomatix Software : Process Simulate Disconnected 16.1
+;* Olp                 : Kuka-Krc 4.38.2
+;*                                                         
+;***********************************************************
+;#END_HEADER
+
+;# Program broj 1 - Proces tockastog zavarivanja
+;# --------- START PATH : Op_zavar ---------
+;FOLD PTP P1_HOME Vel=100 % PP1_HOME Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_HOME; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_HOME; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_HOME
+FDAT_ACT= FP1_HOME
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_HOME 
+;ENDFOLD
+;FOLD PTP P1_20 Vel=100 % PP1_20 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_20; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_20; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_20
+FDAT_ACT= FP1_20
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_20 
+;ENDFOLD
+;# Slanje signala PLC-u da je robot poceo s radom
+;FOLD OUT 3 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=3; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[3]=TRUE
+;ENDFOLD
+;FOLD PTP P1_25 Vel=100 % PP1_25 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_25; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_25; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_25
+FDAT_ACT= FP1_25
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_25 
+;ENDFOLD
+;FOLD OUT 3 '' State= FALSE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=3; Kuka.Logics.IoName=; Kuka.Logics.State=FALSE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[3]=FALSE
+;ENDFOLD
+;FOLD PTP P1_30 Vel=100 % PP1_30 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_30; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_30; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_30
+FDAT_ACT= FP1_30
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_30 
+;ENDFOLD
+;FOLD PTP P1_40 Vel=100 % PP1_40 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_40; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_40; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_40
+FDAT_ACT= FP1_40
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_40 
+;ENDFOLD
+;FOLD LIN P1_45 Vel=0.1 m/s LP1_45 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_45; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_45; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_45
+FDAT_ACT= FP1_45
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_45 
+;ENDFOLD
+;FOLD LIN P1_50 Vel=0.1 m/s LP1_50 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_50; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_50; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_50
+FDAT_ACT= FP1_50
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_50 
+;ENDFOLD
+;# Novi izgled programskog koda zatvaranja i otvaranja kliješta
+;# Aktivacija signala za zatvaranje kliješta
+;FOLD OUT 5 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=5; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[5]=TRUE
+;ENDFOLD
+;# Cekanje potvrde radne poze kliješta
+;FOLD WAIT FOR (IN 7 '');%{PE}%R8.5.21,%MKUKATPBASIS, %CEXT_WAIT_FOR, %VEXT_WAIT_FOR, %P 2:, 4:, 5:$IN, 6:7, 7:, 9:
+WAIT FOR ($IN[7])
+;ENDFOLD
+;# Iskljucivanje signala za zatvaranje i aktivacija signala za otvaranje kliješta
+;FOLD OUT 5 '' State= FALSE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=5; Kuka.Logics.IoName=; Kuka.Logics.State=FALSE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[5]=FALSE
+;ENDFOLD
+;FOLD OUT 6 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=6; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[6]=TRUE
+;ENDFOLD
+;# Cekanje potvrde pocetne poze kliješta
+;FOLD WAIT FOR (IN 8 '');%{PE}%R8.5.21,%MKUKATPBASIS, %CEXT_WAIT_FOR, %VEXT_WAIT_FOR, %P 2:, 4:, 5:$IN, 6:8, 7:, 9:
+WAIT FOR ($IN[8])
+;ENDFOLD
+;# Iksljucivanje signala za otvranje kliješta
+;FOLD OUT 6 '' State= FALSE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=6; Kuka.Logics.IoName=; Kuka.Logics.State=FALSE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[6]=FALSE
+;ENDFOLD
+;FOLD LIN P1_55 Vel=0.1 m/s LP1_55 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_55; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_55; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_55
+FDAT_ACT= FP1_55
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_55 
+;ENDFOLD
+;FOLD LIN P1_60 Vel=0.1 m/s LP1_60 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_60; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_60; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_60
+FDAT_ACT= FP1_60
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_60 
+;ENDFOLD
+;FOLD PTP P1_70 Vel=100 % PP1_70 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_70; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_70; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_70
+FDAT_ACT= FP1_70
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_70 
+;ENDFOLD
+;FOLD PTP P1_80 Vel=100 % PP1_80 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_80; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_80; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_80
+FDAT_ACT= FP1_80
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_80 
+;ENDFOLD
+;FOLD LIN P1_85 Vel=0.1 m/s LP1_85 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_85; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_85; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_85
+FDAT_ACT= FP1_85
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_85 
+;ENDFOLD
+;FOLD LIN P1_90 Vel=0.1 m/s LP1_90 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_90; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_90; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_90
+FDAT_ACT= FP1_90
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_90 
+;ENDFOLD
+;# Aktivacija signala za zatvaranje kliješta
+;FOLD OUT 5 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=5; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[5]=TRUE
+;ENDFOLD
+;# Cekanje potvrde radne poze kliješta
+;FOLD WAIT FOR (IN 7 '');%{PE}%R8.5.21,%MKUKATPBASIS, %CEXT_WAIT_FOR, %VEXT_WAIT_FOR, %P 2:, 4:, 5:$IN, 6:7, 7:, 9:
+WAIT FOR ($IN[7])
+;ENDFOLD
+;# Iskljucivanje signala za zatvaranje i aktivacija signala za otvaranje kliješta
+;FOLD OUT 5 '' State= FALSE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=5; Kuka.Logics.IoName=; Kuka.Logics.State=FALSE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[5]=FALSE
+;ENDFOLD
+;FOLD OUT 6 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=6; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[6]=TRUE
+;ENDFOLD
+;# Cekanje potvrde pocetne poze kliješta
+;FOLD WAIT FOR (IN 8 '');%{PE}%R8.5.21,%MKUKATPBASIS, %CEXT_WAIT_FOR, %VEXT_WAIT_FOR, %P 2:, 4:, 5:$IN, 6:8, 7:, 9:
+WAIT FOR ($IN[8])
+;ENDFOLD
+;# Iksljucivanje signala za otvranje kliješta
+;FOLD OUT 6 '' State= FALSE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=6; Kuka.Logics.IoName=; Kuka.Logics.State=FALSE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[6]=FALSE
+;ENDFOLD
+;FOLD PTP P1_95 Vel=100 % PP1_95 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_95; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_95; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_95
+FDAT_ACT= FP1_95
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_95 
+;ENDFOLD
+;FOLD OUT 4 '' State= TRUE;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.logics.out.out; Kuka.Logics.Io=4; Kuka.Logics.IoName=; Kuka.Logics.State=TRUE; Kuka.Logics.Cont=FALSE
+;ENDFOLD
+$OUT[4]=TRUE
+;ENDFOLD
+;FOLD LIN P1_100 Vel=0.1 m/s LP1_100 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_100; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP1_100; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP1_100
+FDAT_ACT= FP1_100
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP1_100 
+;ENDFOLD
+;FOLD PTP P1_110 Vel=100 % PP1_110 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_110; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_110; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_110
+FDAT_ACT= FP1_110
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_110 
+;ENDFOLD
+;FOLD PTP P1_120 Vel=100 % PP1_120 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_120; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_120; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_120
+FDAT_ACT= FP1_120
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_120 
+;ENDFOLD
+;FOLD PTP P1_HOME Vel=100 % PP1_HOME Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P1_HOME; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP1_HOME; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP1_HOME
+FDAT_ACT= FP1_HOME
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP1_HOME 
+;ENDFOLD
+
+;# Program 2 - Servisni program za brušenje bakrenih kapica
+;# --------- START PATH : Op_brusenje_kapica ---------
+;FOLD PTP P2_HOME Vel=100 % PP2_HOME Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_HOME; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_HOME; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_HOME
+FDAT_ACT= FP2_HOME
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_HOME 
+;ENDFOLD
+;FOLD PTP P2_10 Vel=100 % PP2_10 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_10; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_10; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_10
+FDAT_ACT= FP2_10
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_10 
+;ENDFOLD
+;FOLD PTP P2_20 Vel=100 % PP2_20 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_20; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_20; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_20
+FDAT_ACT= FP2_20
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_20 
+;ENDFOLD
+;FOLD PTP P2_30 Vel=100 % PP2_30 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_30; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_30; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_30
+FDAT_ACT= FP2_30
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_30 
+;ENDFOLD
+;FOLD PTP P2_40 Vel=100 % PP2_40 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_40; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_40; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_40
+FDAT_ACT= FP2_40
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_40 
+;ENDFOLD
+;FOLD PTP P2_50 Vel=100 % PP2_50 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_50; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_50; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_50
+FDAT_ACT= FP2_50
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_50 
+;ENDFOLD
+;FOLD LIN P2_60 Vel=0.1 m/s LP2_60 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_60; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_60; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_60
+FDAT_ACT= FP2_60
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_60 
+;ENDFOLD
+;FOLD LIN P2_70 Vel=0.1 m/s LP2_70 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_70; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_70; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_70
+FDAT_ACT= FP2_70
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_70 
+;ENDFOLD
+;# Okvirno vrijeme cekanja da se bakrena kapica izbrusi
+;SIM # WaitTime 5
+;FOLD LIN P2_80 Vel=0.1 m/s LP2_80 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_80; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_80; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_80
+FDAT_ACT= FP2_80
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_80 
+;ENDFOLD
+;FOLD LIN P2_90 Vel=0.1 m/s LP2_90 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_90; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_90; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_90
+FDAT_ACT= FP2_90
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_90 
+;ENDFOLD
+;# Okvirno vrijeme cekanja da se bakrena kapica izbrusi
+;SIM # WaitTime 5
+;FOLD LIN P2_100 Vel=0.1 m/s LP2_100 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_100; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_100; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_100
+FDAT_ACT= FP2_100
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_100 
+;ENDFOLD
+;FOLD LIN P2_110 Vel=0.1 m/s LP2_110 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_110; Kuka.BlendingEnabled=False; Kuka.MoveDataName=LP2_110; Kuka.VelocityPath=0.1; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=LIN
+;ENDFOLD
+$BWDSTART = FALSE
+LDAT_ACT= LLP2_110
+FDAT_ACT= FP2_110
+BAS(#CP_PARAMS,0.1)
+SET_CD_PARAMS(0)
+LIN XP2_110 
+;ENDFOLD
+;FOLD PTP P2_120 Vel=100 % PP2_120 Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_120; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_120; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_120
+FDAT_ACT= FP2_120
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_120 
+;ENDFOLD
+;FOLD PTP P2_HOME Vel=100 % PP2_HOME Tool[1]:gun Base[0] ;%{PE}
+;FOLD Parameters ;%{h}
+;Params IlfProvider=kukaroboter.basistech.inlineforms.movement.old; Kuka.IsGlobalPoint=False; Kuka.PointName=P2_HOME; Kuka.BlendingEnabled=False; Kuka.MoveDataPtpName=PP2_HOME; Kuka.VelocityPtp=100; Kuka.CurrentCDSetIndex=0; Kuka.MovementParameterFieldEnabled=True; IlfCommand=PTP
+;ENDFOLD
+$BWDSTART = FALSE
+PDAT_ACT= PPP2_HOME
+FDAT_ACT= FP2_HOME
+BAS(#PTP_PARAMS,100)
+SET_CD_PARAMS(0)
+PTP XP2_HOME 
+;ENDFOLD
+
+
+;#START_TRAILER
+
+END
