@@ -6,3 +6,8 @@ U mapi "TIA_Prints_Njegovec" nalaze se popis svih korištenih signala (Signali.p
 Mapa "HMI_erkani" sadrži slike svih izrađenih ekrana u WinCC Advanced-u.
 
 Datoteku "PLC_Njegovec_20250311_1822.zap19" moguće je raspakirati i otvoriti u softveru TIA Portal v19.
+
+Process simulate datoteka nalazi se na poveznici:
+https://drive.google.com/drive/folders/17SgF_wGAh5jmQOR8PUcJLzgYFLZey-HF?usp=drive_link
+
+Kad se zip file raspakira, potrebno je unutar Process Simulate-a postaviti _System root_ u mapu "Study" i pokrenuti .psz datoteku "Njegovec_diplomski".
